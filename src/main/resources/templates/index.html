@@ -43,6 +43,25 @@
 			</tr>
 		</tbody>
 	</table>
+	<table border="1" cellpadding="10" class="fl-table">
+		<thead>
+		<tr>
+			<th>Id of researcher/th>
+			<th>Name of researcher</th>
+			<th>Surname of researcher</th>
+			<th>Last name of researcher</th>
+
+		</tr>
+		</thead>
+		<tbody>
+		<tr th:each="researchers : ${researcher}">
+			<td th:text="${researchers.getNumResearcher()}">Semester</td>
+			<td th:text="${researchers.getName()}">Subject</td>
+			<td th:text="${researchers.getSurname()}">Subject</td>
+			<td th:text="${researchers.getLast_name()}">Subject</td>
+		</tr>
+		</tbody>
+	</table>
 </div>
 </body>
 </html>

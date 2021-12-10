@@ -1,7 +1,9 @@
 package com.example.gradebookbackend.controllers;
 
+import com.example.gradebookbackend.models.Researcher;
 import com.example.gradebookbackend.models.Sell;
 import com.example.gradebookbackend.repositories.ProjectRepository;
+import com.example.gradebookbackend.repositories.ResearcherRepository;
 import com.example.gradebookbackend.repositories.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,12 +22,16 @@ public class AppController {
     private UserRepository userRepo;
     @Autowired
     private ProjectRepository projectRepo;
+    @Autowired
+    private ResearcherRepository researcherRepository;
 
     @RequestMapping("/")
     public String viewStudentHomePage(Map<String, Object> model) {
 
         Iterable<Sell> sells = projectRepo.findAll(); //markRepo.findAll();
+        Iterable<Researcher> researchers = researcherRepository.findAll();
         model.put("sells", sells);
+        model.put("researcher", researchers);
         return "index";
     }
 
