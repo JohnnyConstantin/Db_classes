@@ -1,12 +1,11 @@
 package com.example.gradebookbackend.repositories;
 
-import com.example.gradebookbackend.models.Project;
+import com.example.gradebookbackend.models.Sell;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface ProjectRepository extends JpaRepository<Project, Integer> {
+public interface ProjectRepository extends JpaRepository<Sell, Integer> {
 
-    public List<Project> findAll();
+    public List<Sell> findAll();
 }

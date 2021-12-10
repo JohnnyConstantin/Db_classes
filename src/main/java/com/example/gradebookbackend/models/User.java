@@ -14,7 +14,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "users", schema = "public")
+@Table(name = "guys", schema = "public")
 public class User{
     @Id
     @Column(name = "user_id")
@@ -29,7 +29,7 @@ public class User{
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
-            name = "users_roles",
+            name = "guys_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"),
             schema = "public"
