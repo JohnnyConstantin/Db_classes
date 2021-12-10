@@ -11,17 +11,10 @@
 
 </head>
 <body>
-<div align="center">	
-	<div sec:authorize="isAuthenticated()" id="greetings">
-		You are logged in as <b><span sec:authentication="name">Username</span></b>
-		&nbsp;
-	</div>
-		
-	<form th:action="@{/logout}" method="post">
-		<button class="button-35" role="button" type="submit" value="Logout">Logout</button>
-	</form>
+<div align="center">
 
 	<br/><br/>
+	<h1>??????? Sell</h1>
 	<table border="1" cellpadding="10" class="fl-table">
 		<thead>
 			<tr>
@@ -43,6 +36,8 @@
 			</tr>
 		</tbody>
 	</table>
+
+	<h1>??????? Researcher</h1>
 	<table border="1" cellpadding="10" class="fl-table">
 		<thead>
 		<tr>
@@ -62,6 +57,15 @@
 		</tr>
 		</tbody>
 	</table>
+
+	<div sec:authorize="isAuthenticated()" id="greetings">
+		You are logged in as <b><span sec:authentication="name">Username</span></b>
+		&nbsp;
+	</div>
+
+	<form th:action="@{/logout}" method="post">
+		<button class="button-35" role="button" type="submit" value="Logout">Logout</button>
+	</form>
 </div>
 </body>
 </html>
