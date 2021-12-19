@@ -33,20 +33,42 @@ public class AppController {
     private TypeRepository typeRepository;
 
     @RequestMapping("/")
-    public String viewStudentHomePage(Map<String, Object> model, String keyword) {
+    public String viewStudentHomePage(Map<String, Object> model, String keyword, String keyword2,
+    String keyword3, String keyword4, String keyword5) {
 
         if (keyword != null) {
             model.put("researcher", researcherRepository.findByKeyword(keyword));
+
+        } else {
+            Iterable<Researcher> researchers = researcherRepository.findAll();
+            model.put("researcher", researchers);
+        }
+
+        if (keyword2 != null){
+            model.put("device",deviceRepository.findByKeyword(keyword2));
+        } else {
+            Iterable<Device> devices = deviceRepository.findAll();
+            model.put("device", devices);
+        }
+
+        if (keyword3 != null){
+            model.put("sells",projectRepo.findByKeyword(keyword3));
         } else {
             Iterable<Sell> sells = projectRepo.findAll(); //markRepo.findAll();
-            Iterable<Researcher> researchers = researcherRepository.findAll();
-            Iterable<Device> devices = deviceRepository.findAll();
-            Iterable<Research> researches = researchRepository.findAll();
-            Iterable<Type> types = typeRepository.findAll();
             model.put("sells", sells);
-            model.put("researcher", researchers);
-            model.put("device", devices);
+        }
+
+        if (keyword4 != null){
+            model.put("research", researchRepository.findByKeyword(keyword4));
+        } else {
+            Iterable<Research> researches = researchRepository.findAll();
             model.put("research", researches);
+        }
+
+        if (keyword5 != null){
+            model.put("type",typeRepository.findByKeyword(keyword5));
+        } else {
+            Iterable<Type> types = typeRepository.findAll();
             model.put("type", types);
         }
 

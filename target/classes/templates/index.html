@@ -39,6 +39,11 @@
 	<br/><br/>
 	<h1>List of Sells</h1>
 	<a th:href="@{/showNewSellForm}" class="add"> Add Sell </a>
+	<form th:action="@{/}">
+		<input type="text" name="keyword3" id="keyword3" th:name="keyword3" size="50"  required />
+		<input type="submit" value="Search" />
+		<a th:href="@{/}"><input type="button" value="Clear" id="btnClear" onclick="clearSearch()" /></a>
+	</form>
 	<table border="1" cellpadding="10" class="fl-table">
 		<thead>
 			<tr>
@@ -57,9 +62,11 @@
 				<td th:text="${project.getSumm()}"></td>
 				<td th:text="${project.getDateOrder()}"></td>
 				<td th:text="${project.getDeadline()}"></td>
+				<div sec:authorize="hasAnyAuthority('ADMIN')">
 				<td> <a th:href="@{/showSellForUpdate/{numbOrder}(numbOrder=${project.getNumOrder()})}" class="btn-update">Update</a>
 					<a th:href="@{/deleteSell/{numbOrder}(numbOrder=${project.getNumOrder()})}" class="btn-delete">Delete</a>
 				</td>
+				</div>
 			</tr>
 		</tbody>
 	</table>
@@ -98,6 +105,11 @@
 
 	<h1>List of Devices</h1>
 	<a th:href="@{/showNewDeviceForm}" class="add"> Add Device </a>
+	<form th:action="@{/}">
+		<input type="text" name="keyword2" id="keyword2" th:name="keyword2" size="50"  required />
+		<input type="submit" value="Search" />
+		<a th:href="@{/}"><input type="button" value="Clear" id="btnClear" onclick="clearSearch()" /></a>
+	</form>
 	<table border="1" cellpadding="10" class="fl-table">
 		<thead>
 		<tr>
@@ -126,15 +138,22 @@
 			<td th:text="${devices.getCpu()}"></td>
 			<td th:text="${devices.getCd()}"></td>
 			<td th:text="${devices.getCountry()}"></td>
+			<div sec:authorize="hasAnyAuthority('ADMIN')">
 			<td> <a th:href="@{/showDeviceForUpdate/{code}(code=${devices.getCodeDevice()})}" class="btn-update">Update</a>
 				<a th:href="@{/deleteDevice/{code}(code=${devices.getCodeDevice()})}" class="btn btn-delete">Delete</a>
 			</td>
+			</div>
 		</tr>
 		</tbody>
 	</table>
 
 	<h1>List of Researches</h1>
 	<a th:href="@{/showNewResearchForm}" class="add"> Add Research </a>
+	<form th:action="@{/}">
+		<input type="text" name="keyword4" id="keyword4" th:name="keyword4" size="50"  required />
+		<input type="submit" value="Search" />
+		<a th:href="@{/}"><input type="button" value="Clear" id="btnClear" onclick="clearSearch()" /></a>
+	</form>
 	<table border="1" cellpadding="10" class="fl-table">
 		<thead>
 		<tr>
@@ -153,15 +172,22 @@
 			<td th:text="${researches.getDateResearch()}"></td>
 			<td th:text="${researches.getNumbDays()}"></td>
 			<td th:text="${researches.getNumbSerial()}"></td>
+			<div sec:authorize="hasAnyAuthority('ADMIN')">
 			<td> <a th:href="@{/showResearchForUpdate/{codeWork}(codeWork=${researches.getCodeWork()})}" class="btn-update">Update</a>
 				<a th:href="@{/deleteResearch/{codeWork}(codeWork=${researches.getCodeWork()})}" class="btn btn-delete">Delete</a>
 			</td>
+			</div>
 		</tr>
 		</tbody>
 	</table>
 
 	<h1>List of Devices types</h1>
 	<a th:href="@{/showNewTypeForm}" class="add"> Add Type </a>
+	<form th:action="@{/}">
+		<input type="text" name="keyword5" id="keyword5" th:name="keyword5" size="50"  required />
+		<input type="submit" value="Search" />
+		<a th:href="@{/}"><input type="button" value="Clear" id="btnClear" onclick="clearSearch()" /></a>
+	</form>
 	<table border="1" cellpadding="10" class="fl-table">
 		<thead>
 		<tr>
@@ -174,9 +200,11 @@
 		<tr th:each="types : ${type}">
 			<td th:text="${types.getCodeDevice()}"></td>
 			<td th:text="${types.getDeviceName()}"></td>
+			<div sec:authorize="hasAnyAuthority('ADMIN')">
 			<td> <a th:href="@{/showTypeForUpdate/{codeDevice}(codeDevice=${types.getCodeDevice()})}" class="btn-update">Update</a>
 				<a th:href="@{/deleteType/{codeDevice}(codeDevice=${types.getCodeDevice()})}" class="btn-delete">Delete</a>
 			</td>
+			</div>
 		</tr>
 		</tbody>
 	</table>

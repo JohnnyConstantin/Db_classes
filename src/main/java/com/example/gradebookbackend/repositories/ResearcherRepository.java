@@ -13,7 +13,7 @@ public interface ResearcherRepository extends JpaRepository<Researcher, Integer>
     public List<Researcher> findAll();
 
     public void deleteResearcherByNumResearcher(Integer numb_of_researcher);
-    @Query(value = "select * from researcher r where r.name like %:keyword% or r.surname like %:keyword% or r.position like %:keyword%", nativeQuery = true)
+    @Query(value = "select * from researcher r where r.name like %:keyword% or r.surname like %:keyword%", nativeQuery = true)
     List<Researcher> findByKeyword(@Param("keyword") String keyword);
     public Researcher getResearcherByNumResearcher(Integer numb_of_researcher);
 }
