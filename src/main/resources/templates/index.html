@@ -8,6 +8,29 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+	<style>
+		.btn-update{
+			background-color: darkseagreen;
+			padding: 4px;
+			color: black;
+			text-decoration: none;
+
+		}
+
+		.btn-delete{
+			background-color: firebrick;
+			padding: 4px;
+			color: aliceblue;
+			text-decoration: none;
+		}
+
+		.add{
+			background-color: black;
+			padding: 4px;
+			color: aliceblue;
+			text-decoration: none;
+		}
+	</style>
 
 </head>
 <body>
@@ -15,7 +38,7 @@
 
 	<br/><br/>
 	<h1>List of Sells</h1>
-	<a th:href="@{/showNewSellForm}" class="btn btn-primary btn-sm mb-3"> Add Sell </a>
+	<a th:href="@{/showNewSellForm}" class="add"> Add Sell </a>
 	<table border="1" cellpadding="10" class="fl-table">
 		<thead>
 			<tr>
@@ -34,15 +57,15 @@
 				<td th:text="${project.getSumm()}"></td>
 				<td th:text="${project.getDateOrder()}"></td>
 				<td th:text="${project.getDeadline()}"></td>
-				<td> <a th:href="@{/showSellForUpdate/{numbOrder}(numbOrder=${project.getNumOrder()})}" class="btn btn-primary">Update</a>
-					<a th:href="@{/deleteSell/{numbOrder}(numbOrder=${project.getNumOrder()})}" class="btn btn-danger">Delete</a>
+				<td> <a th:href="@{/showSellForUpdate/{numbOrder}(numbOrder=${project.getNumOrder()})}" class="btn-update">Update</a>
+					<a th:href="@{/deleteSell/{numbOrder}(numbOrder=${project.getNumOrder()})}" class="btn-delete">Delete</a>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 
 	<h1>List of Researchers</h1>
-	<a th:href="@{/showNewResearcherForm}" class="btn btn-primary btn-sm mb-3"> Add Researcher </a>
+	<a th:href="@{/showNewResearcherForm}" class="add"> Add Researcher </a>
 	<table border="1" cellpadding="10" class="fl-table">
 		<thead>
 		<tr>
@@ -59,14 +82,15 @@
 			<td th:text="${researchers.getName()}"></td>
 			<td th:text="${researchers.getSurname()}"></td>
 			<td th:text="${researchers.getLast_name()}"></td>
-			<td> <a th:href="@{/showResearcherForUpdate/{numbResearcher}(numbResearcher=${researchers.getNumResearcher()})}" class="btn btn-primary">Update</a>
-				<a th:href="@{/deleteResearcher/{numbResearcher}(numbResearcher=${researchers.getNumResearcher()})}" class="btn btn-danger">Delete</a>
+			<td> <a th:href="@{/showResearcherForUpdate/{numbResearcher}(numbResearcher=${researchers.getNumResearcher()})}" class="btn-update">Update</a>
+				<a th:href="@{/deleteResearcher/{numbResearcher}(numbResearcher=${researchers.getNumResearcher()})}" class="btn-delete">Delete</a>
 			</td>
 		</tr>
 		</tbody>
 	</table>
 
 	<h1>List of Devices</h1>
+	<a th:href="@{/showNewDeviceForm}" class="add"> Add Device </a>
 	<table border="1" cellpadding="10" class="fl-table">
 		<thead>
 		<tr>
@@ -95,14 +119,15 @@
 			<td th:text="${devices.getCpu()}"></td>
 			<td th:text="${devices.getCd()}"></td>
 			<td th:text="${devices.getCountry()}"></td>
-			<td> <a th:href="@{/showDevicesForUpdate/{serial}(serial=${devices.getSerial()})}" class="btn btn-primary">Update</a>
-				<a th:href="@{/deleteDevices/{serial}(serial=${devices.getSerial()})}" class="btn btn-danger">Delete</a>
+			<td> <a th:href="@{/showDeviceForUpdate/{code}(code=${devices.getCodeDevice()})}" class="btn-update">Update</a>
+				<a th:href="@{/deleteDevice/{code}(code=${devices.getCodeDevice()})}" class="btn btn-delete">Delete</a>
 			</td>
 		</tr>
 		</tbody>
 	</table>
 
 	<h1>List of Researches</h1>
+	<a th:href="@{/showNewResearchForm}" class="add"> Add Research </a>
 	<table border="1" cellpadding="10" class="fl-table">
 		<thead>
 		<tr>
@@ -121,12 +146,15 @@
 			<td th:text="${researches.getDateResearch()}"></td>
 			<td th:text="${researches.getNumbDays()}"></td>
 			<td th:text="${researches.getNumbSerial()}"></td>
+			<td> <a th:href="@{/showResearchForUpdate/{codeWork}(codeWork=${researches.getCodeWork()})}" class="btn-update">Update</a>
+				<a th:href="@{/deleteResearch/{codeWork}(codeWork=${researches.getCodeWork()})}" class="btn btn-delete">Delete</a>
+			</td>
 		</tr>
 		</tbody>
 	</table>
 
 	<h1>List of Devices types</h1>
-	<a th:href="@{/showNewTypeForm}" class="btn btn-primary btn-sm mb-3"> Add Type </a>
+	<a th:href="@{/showNewTypeForm}" class="add"> Add Type </a>
 	<table border="1" cellpadding="10" class="fl-table">
 		<thead>
 		<tr>
@@ -139,8 +167,8 @@
 		<tr th:each="types : ${type}">
 			<td th:text="${types.getCodeDevice()}"></td>
 			<td th:text="${types.getDeviceName()}"></td>
-			<td> <a th:href="@{/showTypeForUpdate/{codeDevice}(codeDevice=${types.getCodeDevice()})}" class="btn btn-primary">Update</a>
-				<a th:href="@{/deleteType/{codeDevice}(codeDevice=${types.getCodeDevice()})}" class="btn btn-danger">Delete</a>
+			<td> <a th:href="@{/showTypeForUpdate/{codeDevice}(codeDevice=${types.getCodeDevice()})}" class="btn-update">Update</a>
+				<a th:href="@{/deleteType/{codeDevice}(codeDevice=${types.getCodeDevice()})}" class="btn-delete">Delete</a>
 			</td>
 		</tr>
 		</tbody>

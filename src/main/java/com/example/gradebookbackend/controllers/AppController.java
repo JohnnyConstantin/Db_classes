@@ -158,4 +158,73 @@ public class AppController {
         return "update_type";
     }
 
+
+    @GetMapping("/showNewDeviceForm")
+    public String showNewDeviceForm(Model model) {
+        // create model attribute to bind form data
+        Device device = new Device();
+        model.addAttribute("device", device);
+        return "new_device";
+    }
+
+    @RequestMapping(value = "/saveDevice", method = RequestMethod.POST)
+    public String saveDevice(@ModelAttribute("device") Device device) {
+        // save customers to database
+        deviceRepository.save(device);
+        return "redirect:/";
+    }
+
+    @GetMapping("/deleteDevice/{codeDevice}")
+    public String deleteDevice(@PathVariable(value = "codeDevice") Integer code_type_of_device) {
+
+        // call delete employee method
+        this.deviceRepository.deleteDeviceByCodeDevice(code_type_of_device);
+        return "redirect:/";
+    }
+
+    @GetMapping(value = "/showDeviceForUpdate/{codeDevice}")
+    public String showDeviceForUpdate(@PathVariable(value = "codeDevice") Integer code_type_of_device, Model model) {
+
+        // get employee from the service
+        Device device = deviceRepository.getDeviceByCodeDevice(code_type_of_device);
+
+        // set employee as a model attribute to pre-populate the form
+        model.addAttribute("device", device);
+        return "update_device";
+    }
+
+
+    @GetMapping("/showNewResearchForm")
+    public String showNewResearchForm(Model model) {
+        // create model attribute to bind form data
+        Research research = new Research();
+        model.addAttribute("research", research);
+        return "new_research";
+    }
+
+    @RequestMapping(value = "/saveResearch", method = RequestMethod.POST)
+    public String saveResearch(@ModelAttribute("research") Research research) {
+        // save customers to database
+        researchRepository.save(research);
+        return "redirect:/";
+    }
+
+    @GetMapping("/deleteResearch/{codeWork}")
+    public String deleteResearch(@PathVariable(value = "codeWork") Integer code_of_work) {
+
+        // call delete employee method
+        this.researchRepository.deleteResearcherByCodeWork(code_of_work);
+        return "redirect:/";
+    }
+
+    @GetMapping(value = "/showResearchForUpdate/{codeWork}")
+    public String showResearchForUpdate(@PathVariable(value = "codeWork") Integer code_of_work, Model model) {
+
+        // get employee from the service
+        Research research = researchRepository.getResearcherByCodeWork(code_of_work);
+
+        // set employee as a model attribute to pre-populate the form
+        model.addAttribute("research", research);
+        return "update_research";
+    }
 }

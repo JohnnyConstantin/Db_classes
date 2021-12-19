@@ -11,23 +11,36 @@
 <div class="container">
     <h1>Devices Management System</h1>
     <hr>
-    <h2>Save Sell</h2>
+    <h2>Save Device</h2>
 
     <form action="#" th:action="@{/saveDevice}" th:object="${device}" method="POST">
-        <input type="text" th:field="*{client}" placeholder="Customer Name" class="form-control mb-4 col-4">
 
-        <input type="text" th:field="*{dateOrder}" placeholder="Date of order" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{codeDevice}" placeholder="Code of device" class="form-control mb-4 col-4">
 
-        <input type="text" th:field="*{deadline}" placeholder="Deadline" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{orderNumb}" placeholder="Number of order" class="form-control mb-4 col-4">
 
-        <input type="text" th:field="*{summ}" placeholder="Summary" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{serial}" placeholder="Serial number" class="form-control mb-4 col-4">
 
-        <button type="submit" class="btn btn-info col-2"> Save Sell</button>
+        <input type="text" th:field="*{vendor}" placeholder="Vendor" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{manufactureDate}" placeholder="Date of manufacturing" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{ram}" placeholder="RAM" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{com}" placeholder="Is any Com" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{cpu}" placeholder="CPU" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{cd}" placeholder="Is any CD" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{country}" placeholder="Country of manufacture" class="form-control mb-4 col-4">
+
+        <button type="submit" class="btn btn-info col-2"> Save Device</button>
     </form>
 
     <hr>
 
-    <a th:href="@{/}"> Back to Sell list</a>
+    <a th:href="@{/}"> Back to Device list</a>
 </div>
 </body>
 
