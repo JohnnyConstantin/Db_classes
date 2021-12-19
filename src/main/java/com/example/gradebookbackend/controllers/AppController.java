@@ -84,4 +84,42 @@ public class AppController {
         return "update_sell";
     }
 
+
+
+
+
+    @GetMapping("/showNewResearcherForm")
+    public String showNewResearcherForm(Model model) {
+        // create model attribute to bind form data
+        Researcher researcher = new Researcher();
+        model.addAttribute("researcher", researcher);
+        return "new_researcher";
+    }
+
+    @RequestMapping(value = "/saveResearcher", method = RequestMethod.POST)
+    public String saveResearcher(@ModelAttribute("researcher") Researcher researcher) {
+        // save customers to database
+        researcherRepository.save(researcher);
+        return "redirect:/";
+    }
+
+    @GetMapping("/deleteResearcher/{numbResearcher}")
+    public String deleteResearcher(@PathVariable(value = "numbResearcher") Integer numb_of_researcher) {
+
+        // call delete employee method
+        this.researcherRepository.deleteResearcherByNumResearcher(numb_of_researcher);
+        return "redirect:/";
+    }
+
+    @GetMapping(value = "/showResearcherForUpdate/{numbResearcher}")
+    public String showResearcherForUpdate(@PathVariable(value = "numbResearcher") Integer numb_of_researcher, Model model) {
+
+        // get employee from the service
+        Researcher researcher = researcherRepository.getResearcherByNumResearcher(numb_of_researcher);
+
+        // set employee as a model attribute to pre-populate the form
+        model.addAttribute("researcher", researcher);
+        return "update_researcher";
+    }
+
 }
