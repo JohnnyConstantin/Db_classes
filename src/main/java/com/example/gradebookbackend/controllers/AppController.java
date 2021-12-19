@@ -33,19 +33,22 @@ public class AppController {
     private TypeRepository typeRepository;
 
     @RequestMapping("/")
-    public String viewStudentHomePage(Map<String, Object> model) {
+    public String viewStudentHomePage(Map<String, Object> model, String keyword) {
 
-        Iterable<Sell> sells = projectRepo.findAll(); //markRepo.findAll();
-        Iterable<Researcher> researchers = researcherRepository.findAll();
-        Iterable<Device> devices = deviceRepository.findAll();
-        Iterable<Research> researches = researchRepository.findAll();
-        Iterable<Type> types = typeRepository.findAll();
-
-        model.put("sells", sells);
-        model.put("researcher", researchers);
-        model.put("device", devices);
-        model.put("research", researches);
-        model.put("type", types);
+        if (keyword != null) {
+            model.put("researcher", researcherRepository.findByKeyword(keyword));
+        } else {
+            Iterable<Sell> sells = projectRepo.findAll(); //markRepo.findAll();
+            Iterable<Researcher> researchers = researcherRepository.findAll();
+            Iterable<Device> devices = deviceRepository.findAll();
+            Iterable<Research> researches = researchRepository.findAll();
+            Iterable<Type> types = typeRepository.findAll();
+            model.put("sells", sells);
+            model.put("researcher", researchers);
+            model.put("device", devices);
+            model.put("research", researches);
+            model.put("type", types);
+        }
 
         return "index";
     }
