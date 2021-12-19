@@ -95,6 +95,9 @@
 			<td th:text="${devices.getCpu()}"></td>
 			<td th:text="${devices.getCd()}"></td>
 			<td th:text="${devices.getCountry()}"></td>
+			<td> <a th:href="@{/showDevicesForUpdate/{serial}(serial=${devices.getSerial()})}" class="btn btn-primary">Update</a>
+				<a th:href="@{/deleteDevices/{serial}(serial=${devices.getSerial()})}" class="btn btn-danger">Delete</a>
+			</td>
 		</tr>
 		</tbody>
 	</table>
@@ -123,6 +126,7 @@
 	</table>
 
 	<h1>List of Devices types</h1>
+	<a th:href="@{/showNewTypeForm}" class="btn btn-primary btn-sm mb-3"> Add Type </a>
 	<table border="1" cellpadding="10" class="fl-table">
 		<thead>
 		<tr>
@@ -135,6 +139,9 @@
 		<tr th:each="types : ${type}">
 			<td th:text="${types.getCodeDevice()}"></td>
 			<td th:text="${types.getDeviceName()}"></td>
+			<td> <a th:href="@{/showTypeForUpdate/{codeDevice}(codeDevice=${types.getCodeDevice()})}" class="btn btn-primary">Update</a>
+				<a th:href="@{/deleteType/{codeDevice}(codeDevice=${types.getCodeDevice()})}" class="btn btn-danger">Delete</a>
+			</td>
 		</tr>
 		</tbody>
 	</table>

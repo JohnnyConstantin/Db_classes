@@ -122,4 +122,40 @@ public class AppController {
         return "update_researcher";
     }
 
+
+
+    @GetMapping("/showNewTypeForm")
+    public String showNewTypeForm(Model model) {
+        // create model attribute to bind form data
+        Type type= new Type();
+        model.addAttribute("type", type);
+        return "new_type";
+    }
+
+    @RequestMapping(value = "/saveType", method = RequestMethod.POST)
+    public String saveType(@ModelAttribute("type") Type type) {
+        // save customers to database
+        typeRepository.save(type);
+        return "redirect:/";
+    }
+
+    @GetMapping("/deleteType/{codeDevice}")
+    public String deleteType(@PathVariable(value = "codeDevice") Integer code_type_of_device) {
+
+        // call delete employee method
+        this.typeRepository.deleteTypeByCodeDevice(code_type_of_device);
+        return "redirect:/";
+    }
+
+    @GetMapping(value = "/showTypeForUpdate/{codeDevice}")
+    public String showTypeForUpdate(@PathVariable(value = "codeDevice") Integer code_type_of_device, Model model) {
+
+        // get employee from the service
+        Type type = typeRepository.getTypeByCodeDevice(code_type_of_device);
+
+        // set employee as a model attribute to pre-populate the form
+        model.addAttribute("type", type);
+        return "update_type";
+    }
+
 }

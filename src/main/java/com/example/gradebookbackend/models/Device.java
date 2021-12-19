@@ -16,6 +16,7 @@ import java.sql.Date;
 @Table(name = "device", schema = "public")
 public class Device {
 
+    @Id
     @Column(name = "code_type_of_device")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer codeDevice;
@@ -23,7 +24,6 @@ public class Device {
     @Column(name = "number_of_order")
     private Integer orderNumb;
 
-    @Id
     @Column(name = "serial_number")
     private String serial;
 

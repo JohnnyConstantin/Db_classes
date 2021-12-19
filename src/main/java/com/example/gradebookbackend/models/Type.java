@@ -17,7 +17,6 @@ public class Type {
 
     @Id
     @Column(name = "code_type_of_device")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer codeDevice;
 
     @Column(name = "name_of_device")

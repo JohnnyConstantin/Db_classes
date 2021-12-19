@@ -7,4 +7,8 @@ import java.util.List;
 
 public interface TypeRepository extends JpaRepository<Type, Integer> {
     public List<Type> findAll();
+
+    public void deleteTypeByCodeDevice(Integer code_type_of_device);
+
+    public Type getTypeByCodeDevice(Integer code_type_of_device);
 }
