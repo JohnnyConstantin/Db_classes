@@ -14,7 +14,8 @@
 <div align="center">
 
 	<br/><br/>
-	<h1>??????? Sell</h1>
+	<h1>List of Sells</h1>
+	<a th:href="@{/showNewSellForm}" class="btn btn-primary btn-sm mb-3"> Add Sell </a>
 	<table border="1" cellpadding="10" class="fl-table">
 		<thead>
 			<tr>
@@ -28,20 +29,23 @@
 		</thead>
 		<tbody>
 			<tr th:each="project : ${sells}">
-				<td th:text="${project.getNumOrder()}">Semester</td>
-				<td th:text="${project.getClient()}">Subject</td>
-				<td th:text="${project.getSumm()}">Subject</td>
-				<td th:text="${project.getDateOrder()}">Subject</td>
-				<td th:text="${project.getDeadline()}">Subject</td>
+				<td th:text="${project.getNumOrder()}"></td>
+				<td th:text="${project.getClient()}"></td>
+				<td th:text="${project.getSumm()}"></td>
+				<td th:text="${project.getDateOrder()}"></td>
+				<td th:text="${project.getDeadline()}"></td>
+				<td> <a th:href="@{/showSellForUpdate/{numbOrder}(numbOrder=${project.getNumOrder()})}" class="btn btn-primary">Update</a>
+					<a th:href="@{/deleteSell/{numbOrder}(numbOrder=${project.getNumOrder()})}" class="btn btn-danger">Delete</a>
+				</td>
 			</tr>
 		</tbody>
 	</table>
 
-	<h1>??????? Researcher</h1>
+	<h1>List of Researchers</h1>
 	<table border="1" cellpadding="10" class="fl-table">
 		<thead>
 		<tr>
-			<th>Id of researcher/th>
+			<th>Id of researcher</th>
 			<th>Name of researcher</th>
 			<th>Surname of researcher</th>
 			<th>Last name of researcher</th>
@@ -50,19 +54,93 @@
 		</thead>
 		<tbody>
 		<tr th:each="researchers : ${researcher}">
-			<td th:text="${researchers.getNumResearcher()}">Semester</td>
-			<td th:text="${researchers.getName()}">Subject</td>
-			<td th:text="${researchers.getSurname()}">Subject</td>
-			<td th:text="${researchers.getLast_name()}">Subject</td>
+			<td th:text="${researchers.getNumResearcher()}"></td>
+			<td th:text="${researchers.getName()}"></td>
+			<td th:text="${researchers.getSurname()}"></td>
+			<td th:text="${researchers.getLast_name()}"></td>
 		</tr>
 		</tbody>
 	</table>
 
+	<h1>List of Devices</h1>
+	<table border="1" cellpadding="10" class="fl-table">
+		<thead>
+		<tr>
+			<th>Serial Number</th>
+			<th>Type of device</th>
+			<th>Number of order</th>
+			<th>vendor</th>
+			<th>Date of manufacture</th>
+			<th>RAM</th>
+			<th>COM</th>
+			<th>CPU</th>
+			<th>CD</th>
+			<th>Country of manufacture</th>
+
+		</tr>
+		</thead>
+		<tbody>
+		<tr th:each="devices : ${device}">
+			<td th:text="${devices.getSerial()}"></td>
+			<td th:text="${devices.getCodeDevice()}"></td>
+			<td th:text="${devices.getOrderNumb()}"></td>
+			<td th:text="${devices.getVendor()}"></td>
+			<td th:text="${devices.getManufactureDate()}"></td>
+			<td th:text="${devices.getRam()}"></td>
+			<td th:text="${devices.getCom()}"></td>
+			<td th:text="${devices.getCpu()}"></td>
+			<td th:text="${devices.getCd()}"></td>
+			<td th:text="${devices.getCountry()}"></td>
+		</tr>
+		</tbody>
+	</table>
+
+	<h1>List of Researches</h1>
+	<table border="1" cellpadding="10" class="fl-table">
+		<thead>
+		<tr>
+			<th>Code of work</th>
+			<th>Number of researcher</th>
+			<th>Date of start research</th>
+			<th>Days for research</th>
+			<th>Serial number of device</th>
+
+		</tr>
+		</thead>
+		<tbody>
+		<tr th:each="researches : ${research}">
+			<td th:text="${researches.getCodeWork()}"></td>
+			<td th:text="${researches.getNumbResearcher()}"></td>
+			<td th:text="${researches.getDateResearch()}"></td>
+			<td th:text="${researches.getNumbDays()}"></td>
+			<td th:text="${researches.getNumbSerial()}"></td>
+		</tr>
+		</tbody>
+	</table>
+
+	<h1>List of Devices types</h1>
+	<table border="1" cellpadding="10" class="fl-table">
+		<thead>
+		<tr>
+			<th>Code type of device</th>
+			<th>Name of device's type</th>
+
+		</tr>
+		</thead>
+		<tbody>
+		<tr th:each="types : ${type}">
+			<td th:text="${types.getCodeDevice()}"></td>
+			<td th:text="${types.getDeviceName()}"></td>
+		</tr>
+		</tbody>
+	</table>
+
+	<br>
+	<br>
+	<br>
 	<div sec:authorize="isAuthenticated()" id="greetings">
 		You are logged in as <b><span sec:authentication="name">Username</span></b>
-		&nbsp;
 	</div>
-
 	<form th:action="@{/logout}" method="post">
 		<button class="button-35" role="button" type="submit" value="Logout">Logout</button>
 	</form>
